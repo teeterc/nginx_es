@@ -36,3 +36,7 @@ ENTRYPOINT ["nginx"]
 
 # Expose ports.
 EXPOSE 80
+
+# Set the default command to execute
+# when creating a new container
+CMD service nginx start
