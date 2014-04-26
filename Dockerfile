@@ -32,7 +32,7 @@ VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx"]
 WORKDIR /etc/nginx
 
 # Define default command.
-ENTRYPOINT ["nginx"]
+ENTRYPOINT ["nginx_es"]
 
 # Expose ports.
 EXPOSE 80
