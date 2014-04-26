@@ -13,11 +13,9 @@ FROM dockerfile/ubuntu
 # Install Nginx.
 RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get update
+RUN apt-get install -y nano wget dialog net-tools
 RUN apt-get install -y nginx
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
-
-# Install tools
-RUN apt-get install -y nano wget dialog net-tools
 
 # Remove the default Nginx configuration file
 RUN rm -v /etc/nginx/nginx.conf
