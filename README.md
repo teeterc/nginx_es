@@ -13,7 +13,7 @@ This repository contains **Dockerfile** of [Nginx](http://nginx.org/) configured
 
 1. Install [Docker](https://www.docker.io/).
 
-2. Build an image from Dockerfile: `docker build -t="jbasdf/nginx" github.com/jbasdf/nginx_es`)
+2. Build an image from Dockerfile: `docker build -t="jbasdf/nginx_es" github.com/jbasdf/nginx_es`)
 
 
 ### Usage
@@ -22,6 +22,6 @@ This repository contains **Dockerfile** of [Nginx](http://nginx.org/) configured
 
 #### Attach persistent/shared directories
 
-    docker run -d -p 80:80 -v <sites-enabled-dir>:/etc/nginx/sites-enabled -v <log-dir>:/var/log/nginx dockerfile/nginx
+    docker run -d -p 80:80 -v <sites-enabled-dir>:/etc/nginx/sites-enabled -v <log-dir>:/var/log/nginx jbasdf/nginx
 
 Open `http://<host>` to see the welcome page.
