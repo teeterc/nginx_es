@@ -8,7 +8,7 @@
 ############################################################
 
 # Pull base image.
-FROM dockerfile/elasticsearch
+FROM dockerfile/ubuntu
 
 # Install Nginx.
 RUN add-apt-repository -y ppa:nginx/stable
