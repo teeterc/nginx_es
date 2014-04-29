@@ -8,23 +8,7 @@
 ############################################################
 
 # Pull base image.
-FROM dockerfile/java
-
-# Define mountable directories.
-VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx", "/var/www/es"]
-
-# Install ElasticSearch.
-RUN cd /tmp && wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.tar.gz
-RUN cd /tmp && tar xvzf elasticsearch-1.1.1.tar.gz && rm -f elasticsearch-1.1.1.tar.gz
-RUN mv /tmp/elasticsearch-1.1.1 /elasticsearch
-
-# Define working directory.
-WORKDIR /data
-
-# Define default command.
-ENTRYPOINT ["/elasticsearch/bin/elasticsearch"]
-
-
+FROM dockerfile/elasticsearch
 
 # Install Nginx.
 RUN add-apt-repository -y ppa:nginx/stable
@@ -37,6 +21,9 @@ RUN rm -v /etc/nginx/nginx.conf
 
 # Copy a configuration file from the current directory
 ADD nginx.conf /etc/nginx/
+
+# Define mountable directories.
+VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx"]
 
 # Define working directory.
 WORKDIR /etc/nginx
