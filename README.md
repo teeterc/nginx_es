@@ -15,18 +15,16 @@ configured as a proxy for [ElasticSearch](http://www.elasticsearch.org/)
 1. Install tools for setting up users
   sudo apt-get install -y apache2-utils
 
-2. Setup directory
+2. Setup directories
   sudo mkdir -p /var/www/es
+  sudo mkdir -p /var/log/nginx
 
 3. Add a user. You'll be prompted for a password
   sudo htpasswd -c /var/www/es/.htpasswd username
 
-4. Build container
-  docker build -t="jbasdf/nginx_es" github.com/jbasdf/nginx_es
+4. Install [Docker](https://www.docker.io/).
 
-5. Install [Docker](https://www.docker.io/).
-
-6. Build an image from Dockerfile:
+5. Build an image from Dockerfile:
   docker build -t="jbasdf/nginx_es" github.com/jbasdf/nginx_es
 
 
@@ -36,6 +34,6 @@ configured as a proxy for [ElasticSearch](http://www.elasticsearch.org/)
 
 #### Attach persistent/shared directories
 
-    docker run -d -p 80:80 jbasdf/nginx_es -v /var/log/nginx:/var/log/nginx jbasdf/nginx -v /var/www/es:/var/www/es
+    docker run -d -p 80:80 -v /var/log/nginx:/var/log/nginx -v /var/www/es:/var/www/es jbasdf/nginx_es
 
 Open `http://<host>` to see the welcome page.
