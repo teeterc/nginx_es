@@ -19,7 +19,7 @@ configured as a proxy for [ElasticSearch](http://www.elasticsearch.org/)
   sudo mkdir -p /var/www/es
 
 3. Add a user. You'll be prompted for a password
-  sudo htpasswd -c /var/www/es/.htpasswd gearsnyper
+  sudo htpasswd -c /var/www/es/.htpasswd username
 
 4. Build container
   docker build -t="jbasdf/nginx_es" github.com/jbasdf/nginx_es
