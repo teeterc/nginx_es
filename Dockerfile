@@ -22,6 +22,9 @@ RUN rm -v /etc/nginx/nginx.conf
 # Copy a configuration file from the current directory
 ADD nginx.conf /etc/nginx/
 
+# Copy startup script
+ADD startup.sh /opt/
+
 # Define mountable directories.
 VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx"]
 
@@ -29,7 +32,11 @@ VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx"]
 WORKDIR /etc/nginx
 
 # Define default command.
-ENTRYPOINT ["nginx"]
+#ENTRYPOINT ["nginx"]
 
 # Expose ports.
 EXPOSE 80
+
+# Run script to modify nginx config and start nginx
+#RUN ["setup.sh"]
+ENTRYPOINT ["/opt/startup.sh"]
