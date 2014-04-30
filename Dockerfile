@@ -25,6 +25,9 @@ ADD nginx.conf /etc/nginx/
 # Copy startup script
 ADD startup.sh /opt/
 
+# Make the startup script executable
+RUN cmod +x /opt/startup.sh
+
 # Define mountable directories.
 VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx"]
 

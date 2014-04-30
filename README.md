@@ -35,5 +35,7 @@ configured as a proxy for [ElasticSearch](http://www.elasticsearch.org/)
 #### Attach persistent/shared directories
 
     docker run -d -p 80:80 -v /var/log/nginx:/var/log/nginx -v /var/www/es:/var/www/es jbasdf/nginx_es
+    docker run -d -p 80:80 --link elasticsearch:elasticsearch jbasdf/nginx_es -v /var/log/nginx:/var/log/nginx jbasdf/nginx -v /var/www/es:/var/www/es
+
 
 Open `http://<host>` to see the welcome page.
