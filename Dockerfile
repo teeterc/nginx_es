@@ -34,12 +34,8 @@ VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx"]
 # Define working directory.
 WORKDIR /etc/nginx
 
-# Define default command.
-#ENTRYPOINT ["nginx"]
-
 # Expose ports.
 EXPOSE 80
 
-# Run script to modify nginx config and start nginx
-#RUN ["setup.sh"]
+# Define default command - script to modify nginx config and start nginx
 ENTRYPOINT ["/opt/startup.sh"]
