@@ -19,12 +19,9 @@ configured as a proxy for [ElasticSearch](http://www.elasticsearch.org/)
   sudo mkdir -p /var/www/es
   sudo mkdir -p /var/log/nginx
 
-3. Add a user. You'll be prompted for a password
-  sudo htpasswd -c /var/www/es/.htpasswd username
+3. Install [Docker](https://www.docker.io/).
 
-4. Install [Docker](https://www.docker.io/).
-
-5. Build an image from Dockerfile:
+4. Build an image from Dockerfile:
   docker build -t="jbasdf/nginx_es" github.com/jbasdf/nginx_es
 
 
@@ -35,6 +32,21 @@ configured as a proxy for [ElasticSearch](http://www.elasticsearch.org/)
 #### Attach persistent/shared directories
 
     docker run -d -p 80:80 --link elasticsearch:elasticsearch -v /var/log/nginx:/var/log/nginx -v /var/www/es:/var/www/es jbasdf/nginx_es
+
+#### Authorize users
+
+  # Add tools
+  sudo apt-get install -y apache2-utils
+
+  # Setup directories
+  sudo mkdir -p /var/www/es
+  sudo mkdir -p /var/www/es_public
+
+  # Add a public user.
+  sudo htpasswd -c /var/www/es_public/.htpasswd my_public_user_name
+
+  # Add an admin user.
+  sudo htpasswd -c /var/www/es/.htpasswd my_admin_user_name
 
 
 Open `http://<host>` to see the welcome page.
