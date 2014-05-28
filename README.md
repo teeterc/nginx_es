@@ -7,7 +7,7 @@ configured as a proxy for [ElasticSearch](http://www.elasticsearch.org/)
 
 ### Dependencies
 
-* [dockerfile/java](http://dockerfile.github.io/#/java)
+* [dockerfile/ubuntu](http://dockerfile.github.io/#/ubuntu)
 
 
 ### Installation
