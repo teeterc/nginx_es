@@ -31,7 +31,7 @@ ADD startup.sh /opt/
 RUN chmod +x /opt/startup.sh
 
 # Define mountable directories.
-VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx", "/var/www/es"]
+VOLUME ["/data", "/etc/nginx/sites-enabled", "/var/log/nginx", "/var/www/es", "/var/www/es_public"]
 
 # Define working directory.
 WORKDIR /etc/nginx
